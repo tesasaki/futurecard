@@ -22,6 +22,28 @@
         @click="clickStyleCard"
       />
     </div>
+    <div class="card-box whom-card-box" :style="{filter: `drop-shadow(0 5px 15px ${cardState.whomCard.shadow})`}">
+      <div class="box-title" :class="{flipping: cardState.whomCard.isFlipping}" :style="{
+        backgroundColor: cardState.whomCard.color
+      }">だれにむけてはなす？</div>
+      <TalkCard
+        :text="cardState.whomCard.text"
+        :bgcolor="cardState.whomCard.color"
+        :isOpen="cardState.whomCard.isOpen"
+        @click="clickWhomCard"
+      />
+    </div>
+    <div class="card-box scene-card-box" :style="{filter: `drop-shadow(0 5px 15px ${cardState.sceneCard.shadow})`}">
+      <div class="box-title" :class="{flipping: cardState.sceneCard.isFlipping}" :style="{
+        backgroundColor: cardState.sceneCard.color
+      }">どんなときにはなす？</div>
+      <TalkCard
+        :text="cardState.sceneCard.text"
+        :bgcolor="cardState.sceneCard.color"
+        :isOpen="cardState.sceneCard.isOpen"
+        @click="clicksceneCard"
+      />
+    </div>
     <div class="control">
       <button class="cancel-button" @click="closeCard" title="change cards" v-show="isCardOpen"></button>
       <button class="ok-button" @click="startCount" title="start talk" v-show="isAllCardOpen && !timerState.isActive"></button>
@@ -40,7 +62,7 @@
 <script lang="ts">
 import { defineComponent, reactive, computed } from '@vue/composition-api'
 import TalkCard from '@/components/TalkCard.vue'
-import { THEME_COLLOR, STYLE_COLOR, THEME_SHADOW, STYLE_SHADOW } from '@/Colors'
+import { THEME_COLLOR, STYLE_COLOR, WHOM_COLOR, SCENE_COLOR, THEME_SHADOW, STYLE_SHADOW, WHOM_SHADOW, SCENE_SHADOW } from '@/Colors'
 import cards from '../assets/cards.json'
 import { randomFrom, wait } from '@/lib/utils'
 import CountDown from '@/components/CountDown.vue'
@@ -66,6 +88,20 @@ export default defineComponent({
         shadow: STYLE_SHADOW,
         isOpen: false,
         isFlipping: false
+      },
+      whomCard: {
+        text: 'だれに//たいして',
+        color: WHOM_COLOR,
+        shadow: WHOM_SHADOW,
+        isOpen: false,
+        isFlipping: false
+      },
+      sceneCard: {
+        text: 'いつが//いいかな',
+        color: SCENE_COLOR,
+        shadow: SCENE_SHADOW,
+        isOpen: false,
+        isFlipping: false
       }
     })
     const timerState = reactive({
@@ -74,11 +110,11 @@ export default defineComponent({
       isPopping: false
     })
 
-    const isCardOpen = computed(() => cardState.themeCard.isOpen || cardState.styleCard.isOpen)
-    const isAllCardOpen = computed(() => cardState.themeCard.isOpen && cardState.styleCard.isOpen)
+    const isCardOpen = computed(() => cardState.themeCard.isOpen || cardState.styleCard.isOpen || cardState.whomCard.isOpen || cardState.sceneCard.isOpen)
+    const isAllCardOpen = computed(() => cardState.themeCard.isOpen && cardState.styleCard.isOpen && cardState.whomCard.isOpen && cardState.sceneCard.isOpen)
     const isTimeup = computed(() => timerState.isActive && timerState.time === 0)
 
-    const openCard = async (isTheme = true, isStyle = true) => {
+    const openCard = async (isTheme = true, isStyle = true, isWhom = true, isScene = true) => {
       if (isTheme) {
         cardState.themeCard.text = randomFrom(cards.themes)
         cardState.themeCard.isOpen = true
@@ -95,9 +131,25 @@ export default defineComponent({
         cardState.styleCard.isFlipping = false
         await wait(250)
       }
+      if (isWhom) {
+        cardState.whomCard.text = randomFrom(cards.whom)
+        cardState.whomCard.isOpen = true
+        cardState.whomCard.isFlipping = true
+        await wait(300)
+        cardState.whomCard.isFlipping = false
+        await wait(250)
+      }
+      if (isScene) {
+        cardState.sceneCard.text = randomFrom(cards.scene)
+        cardState.sceneCard.isOpen = true
+        cardState.sceneCard.isFlipping = true
+        await wait(300)
+        cardState.sceneCard.isFlipping = false
+        await wait(250)
+      }
     }
 
-    const closeCard = async (isTheme = true, isStyle = true) => {
+    const closeCard = async (isTheme = true, isStyle = true, isWhom = true, isScene = true) => {
       if (isTheme && cardState.themeCard.isOpen) {
         cardState.themeCard.isOpen = false
         cardState.themeCard.isFlipping = true
@@ -109,6 +161,18 @@ export default defineComponent({
         cardState.styleCard.isFlipping = true
         await wait(300)
         cardState.styleCard.isFlipping = false
+      }
+      if (isWhom && cardState.whomCard.isOpen) {
+        cardState.whomCard.isOpen = false
+        cardState.whomCard.isFlipping = true
+        await wait(300)
+        cardState.whomCard.isFlipping = false
+      }
+      if (isScene && cardState.sceneCard.isOpen) {
+        cardState.sceneCard.isOpen = false
+        cardState.sceneCard.isFlipping = true
+        await wait(300)
+        cardState.sceneCard.isFlipping = false
       }
       if (!isAllCardOpen.value) {
         timerState.time = 0
@@ -134,6 +198,16 @@ export default defineComponent({
       openCard(false, true)
     }
 
+    const clickWhomCard = () => {
+      if (cardState.whomCard.isOpen) { return }
+      openCard(true, false)
+    }
+
+    const clickSceneCard = () => {
+      if (cardState.sceneCard.isOpen) { return }
+      openCard(false, true)
+    }
+
     const startCount = async () => {
       timerState.time = 20
       timerState.isActive = true
@@ -153,6 +227,8 @@ export default defineComponent({
       closeCard,
       clickThemeCard,
       clickStyleCard,
+      clickWhomCard,
+      clickSceneCard,
       timerState,
       startCount
     }
@@ -169,7 +245,8 @@ export default defineComponent({
 }
 .card-box {
   position: relative;
-  height: calc(50% - 20px);
+  height: calc(50% - 100px);
+  width: calc(60% - 50px);
   padding: 20px 10%;
   transform-style: preserve-3d;
   perspective: 1000px;
@@ -195,13 +272,13 @@ export default defineComponent({
 .control {
   position: absolute;
   width: 100%;
-  height: 70px;
+  height: 50px;
   left: 0;
   top: calc(100% - 15px);
   z-index: 1;
   text-align: center;
   pointer-events: none;
-  filter: drop-shadow(0 0 1px #ffffff00);
+  filter: drop-shadow(0 0 1px #ffff000);
   * {
     pointer-events: auto;
   }
