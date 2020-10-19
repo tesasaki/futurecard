@@ -1,7 +1,7 @@
 <template>
   <header class="app-header-root">
     <div class="subtitle">
-      みんなで きがるに おはなししよう
+      働 き 方 の  未 来 を  考 え る
     </div>
     <div class="title">
       CHA-CHAT!

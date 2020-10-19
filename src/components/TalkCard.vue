@@ -37,7 +37,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .talk-card-root {
   position: relative;
-  height: 100%;
+  height: 70%;
   padding: 5px;
   border-radius: 4px;
   transform: rotateY(180deg);

@@ -3,7 +3,7 @@
     <div class="card-box theme-card-box" :style="{filter: `drop-shadow(0 5px 15px ${cardState.themeCard.shadow})`}">
       <div class="box-title" :class="{flipping: cardState.themeCard.isFlipping}" :style="{
         backgroundColor: cardState.themeCard.color
-      }">なんのことをはなす？</div>
+      }">どんなシーンで？</div>
       <TalkCard
         :text="cardState.themeCard.text"
         :bgcolor="cardState.themeCard.color"
@@ -14,7 +14,7 @@
     <div class="card-box style-card-box" :style="{filter: `drop-shadow(0 5px 15px ${cardState.styleCard.shadow})`}">
       <div class="box-title" :class="{flipping: cardState.styleCard.isFlipping}" :style="{
         backgroundColor: cardState.styleCard.color
-      }">どんなふうにはなす？</div>
+      }">どんな課題を？</div>
       <TalkCard
         :text="cardState.styleCard.text"
         :bgcolor="cardState.styleCard.color"
@@ -25,7 +25,7 @@
     <div class="card-box whom-card-box" :style="{filter: `drop-shadow(0 5px 15px ${cardState.whomCard.shadow})`}">
       <div class="box-title" :class="{flipping: cardState.whomCard.isFlipping}" :style="{
         backgroundColor: cardState.whomCard.color
-      }">だれにむけてはなす？</div>
+      }">どんなテクノロジーを活用して？</div>
       <TalkCard
         :text="cardState.whomCard.text"
         :bgcolor="cardState.whomCard.color"
@@ -36,7 +36,7 @@
     <div class="card-box scene-card-box" :style="{filter: `drop-shadow(0 5px 15px ${cardState.sceneCard.shadow})`}">
       <div class="box-title" :class="{flipping: cardState.sceneCard.isFlipping}" :style="{
         backgroundColor: cardState.sceneCard.color
-      }">どんなときにはなす？</div>
+      }">アイデアを考える視点</div>
       <TalkCard
         :text="cardState.sceneCard.text"
         :bgcolor="cardState.sceneCard.color"
