@@ -9,7 +9,7 @@
         :bgcolor="cardState.sceneCard.color"
         :isOpen="cardState.sceneCard.isOpen"
         @click="clickSceneCard"
-      />
+       />
     </div>
     <div class="card-box issue-card-box" :style="{filter: `drop-shadow(0 5px 15px ${cardState.issueCard.shadow})`}">
       <div class="box-title" :class="{flipping: cardState.issueCard.isFlipping}" :style="{

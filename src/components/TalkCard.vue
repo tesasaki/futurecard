@@ -44,7 +44,7 @@ export default defineComponent({
   transition: transform 0.5s;
   .text-box {
     display: flex;
-    flex-direction: column;
+    flex-wrap        : wrap;
     justify-content: center;
     width: 100%;
     height: 100%;
