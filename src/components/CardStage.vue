@@ -254,7 +254,7 @@ export default defineComponent({
   .box-title {
     position: relative;
     display: inline-block;
-    height: 20px;
+    height: 25px;
     font-size: 14px;
     padding: 1px 10px;
     border-radius: 4px;
