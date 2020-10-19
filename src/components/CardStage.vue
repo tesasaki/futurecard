@@ -41,7 +41,7 @@
         :text="cardState.techniqueCard.text"
         :bgcolor="cardState.techniqueCard.color"
         :isOpen="cardState.techniqueCard.isOpen"
-        @click="clicktechniqueCard"
+        @click="clickTechniqueCard"
       />
     </div>
     <div class="control">
@@ -190,22 +190,22 @@ export default defineComponent({
 
     const clickSceneCard = () => {
       if (cardState.sceneCard.isOpen) { return }
-      openCard(true, false)
+      openCard(true, false, false, false)
     }
 
     const clickIssueCard = () => {
       if (cardState.issueCard.isOpen) { return }
-      openCard(false, true)
+      openCard(false, true, false, false)
     }
 
     const clickTechnologyCard = () => {
       if (cardState.technologyCard.isOpen) { return }
-      openCard(true, false)
+      openCard(false, false, true, false)
     }
 
     const clickTechniqueCard = () => {
       if (cardState.techniqueCard.isOpen) { return }
-      openCard(false, true)
+      openCard(false, false, false, true)
     }
 
     const startCount = async () => {
