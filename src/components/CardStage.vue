@@ -1,47 +1,47 @@
 <template>
   <div class="card-stage-root">
-    <div class="card-box theme-card-box" :style="{filter: `drop-shadow(0 5px 15px ${cardState.themeCard.shadow})`}">
-      <div class="box-title" :class="{flipping: cardState.themeCard.isFlipping}" :style="{
-        backgroundColor: cardState.themeCard.color
-      }">どんなシーンで？</div>
-      <TalkCard
-        :text="cardState.themeCard.text"
-        :bgcolor="cardState.themeCard.color"
-        :isOpen="cardState.themeCard.isOpen"
-        @click="clickThemeCard"
-      />
-    </div>
-    <div class="card-box style-card-box" :style="{filter: `drop-shadow(0 5px 15px ${cardState.styleCard.shadow})`}">
-      <div class="box-title" :class="{flipping: cardState.styleCard.isFlipping}" :style="{
-        backgroundColor: cardState.styleCard.color
-      }">どんな課題を？</div>
-      <TalkCard
-        :text="cardState.styleCard.text"
-        :bgcolor="cardState.styleCard.color"
-        :isOpen="cardState.styleCard.isOpen"
-        @click="clickStyleCard"
-      />
-    </div>
-    <div class="card-box whom-card-box" :style="{filter: `drop-shadow(0 5px 15px ${cardState.whomCard.shadow})`}">
-      <div class="box-title" :class="{flipping: cardState.whomCard.isFlipping}" :style="{
-        backgroundColor: cardState.whomCard.color
-      }">どんなテクノロジーを活用して？</div>
-      <TalkCard
-        :text="cardState.whomCard.text"
-        :bgcolor="cardState.whomCard.color"
-        :isOpen="cardState.whomCard.isOpen"
-        @click="clickWhomCard"
-      />
-    </div>
     <div class="card-box scene-card-box" :style="{filter: `drop-shadow(0 5px 15px ${cardState.sceneCard.shadow})`}">
       <div class="box-title" :class="{flipping: cardState.sceneCard.isFlipping}" :style="{
         backgroundColor: cardState.sceneCard.color
-      }">アイデアを考える視点</div>
+      }">どんなシーンで？</div>
       <TalkCard
         :text="cardState.sceneCard.text"
         :bgcolor="cardState.sceneCard.color"
         :isOpen="cardState.sceneCard.isOpen"
         @click="clicksceneCard"
+      />
+    </div>
+    <div class="card-box issue-card-box" :style="{filter: `drop-shadow(0 5px 15px ${cardState.issueCard.shadow})`}">
+      <div class="box-title" :class="{flipping: cardState.issueCard.isFlipping}" :style="{
+        backgroundColor: cardState.issueCard.color
+      }">どんな課題を？</div>
+      <TalkCard
+        :text="cardState.issueCard.text"
+        :bgcolor="cardState.issueCard.color"
+        :isOpen="cardState.issueCard.isOpen"
+        @click="clickIssueCard"
+      />
+    </div>
+    <div class="card-box technology-card-box" :style="{filter: `drop-shadow(0 5px 15px ${cardState.technologyCard.shadow})`}">
+      <div class="box-title" :class="{flipping: cardState.technologyCard.isFlipping}" :style="{
+        backgroundColor: cardState.technologyCard.color
+      }">どんなテクノロジーを活用して？</div>
+      <TalkCard
+        :text="cardState.technologyCard.text"
+        :bgcolor="cardState.technologyCard.color"
+        :isOpen="cardState.technologyCard.isOpen"
+        @click="clickTechnologyCard"
+      />
+    </div>
+    <div class="card-box technique-card-box" :style="{filter: `drop-shadow(0 5px 15px ${cardState.techniqueCard.shadow})`}">
+      <div class="box-title" :class="{flipping: cardState.techniqueCard.isFlipping}" :style="{
+        backgroundColor: cardState.techniqueCard.color
+      }">アイデアを考える視点</div>
+      <TalkCard
+        :text="cardState.techniqueCard.text"
+        :bgcolor="cardState.techniqueCard.color"
+        :isOpen="cardState.techniqueCard.isOpen"
+        @click="clicktechniqueCard"
       />
     </div>
     <div class="control">
@@ -62,7 +62,7 @@
 <script lang="ts">
 import { defineComponent, reactive, computed } from '@vue/composition-api'
 import TalkCard from '@/components/TalkCard.vue'
-import { THEME_COLLOR, STYLE_COLOR, WHOM_COLOR, SCENE_COLOR, THEME_SHADOW, STYLE_SHADOW, WHOM_SHADOW, SCENE_SHADOW } from '@/Colors'
+import { SCENE_COLOR, ISSUE_COLOR, TECHNOLOGY_COLOR, TECHNIQUE_COLOR, SCENE_SHADOW, ISSUE_SHADOW, TECHNOLOGY_SHADOW, TECHNIQUE_SHADOW } from '@/Colors'
 import cards from '../assets/cards.json'
 import { randomFrom, wait } from '@/lib/utils'
 import CountDown from '@/components/CountDown.vue'
@@ -75,31 +75,31 @@ export default defineComponent({
   props: {},
   setup () {
     const cardState = reactive({
-      themeCard: {
-        text: '100にん//あつまったら//できそうなこと',
-        color: THEME_COLLOR,
-        shadow: THEME_SHADOW,
-        isOpen: false,
-        isFlipping: false
-      },
-      styleCard: {
-        text: 'ゆ〜っくり//しゃべってみよう',
-        color: STYLE_COLOR,
-        shadow: STYLE_SHADOW,
-        isOpen: false,
-        isFlipping: false
-      },
-      whomCard: {
-        text: 'だれに//たいして',
-        color: WHOM_COLOR,
-        shadow: WHOM_SHADOW,
-        isOpen: false,
-        isFlipping: false
-      },
       sceneCard: {
-        text: 'いつが//いいかな',
+        text: '100にん//あつまったら//できそうなこと',
         color: SCENE_COLOR,
         shadow: SCENE_SHADOW,
+        isOpen: false,
+        isFlipping: false
+      },
+      issueCard: {
+        text: 'ゆ〜っくり//しゃべってみよう',
+        color: ISSUE_COLOR,
+        shadow: ISSUE_SHADOW,
+        isOpen: false,
+        isFlipping: false
+      },
+      technologyCard: {
+        text: 'だれに//たいして',
+        color: TECHNOLOGY_COLOR,
+        shadow: TECHNOLOGY_SHADOW,
+        isOpen: false,
+        isFlipping: false
+      },
+      techniqueCard: {
+        text: 'いつが//いいかな',
+        color: TECHNIQUE_COLOR,
+        shadow: TECHNIQUE_SHADOW,
         isOpen: false,
         isFlipping: false
       }
@@ -110,69 +110,69 @@ export default defineComponent({
       isPopping: false
     })
 
-    const isCardOpen = computed(() => cardState.themeCard.isOpen || cardState.styleCard.isOpen || cardState.whomCard.isOpen || cardState.sceneCard.isOpen)
-    const isAllCardOpen = computed(() => cardState.themeCard.isOpen && cardState.styleCard.isOpen && cardState.whomCard.isOpen && cardState.sceneCard.isOpen)
+    const isCardOpen = computed(() => cardState.sceneCard.isOpen || cardState.issueCard.isOpen || cardState.technologyCard.isOpen || cardState.techniqueCard.isOpen)
+    const isAllCardOpen = computed(() => cardState.sceneCard.isOpen && cardState.issueCard.isOpen && cardState.technologyCard.isOpen && cardState.techniqueCard.isOpen)
     const isTimeup = computed(() => timerState.isActive && timerState.time === 0)
 
-    const openCard = async (isTheme = true, isStyle = true, isWhom = true, isScene = true) => {
-      if (isTheme) {
-        cardState.themeCard.text = randomFrom(cards.themes)
-        cardState.themeCard.isOpen = true
-        cardState.themeCard.isFlipping = true
-        await wait(300)
-        cardState.themeCard.isFlipping = false
-        await wait(250)
-      }
-      if (isStyle) {
-        cardState.styleCard.text = randomFrom(cards.styles)
-        cardState.styleCard.isOpen = true
-        cardState.styleCard.isFlipping = true
-        await wait(300)
-        cardState.styleCard.isFlipping = false
-        await wait(250)
-      }
-      if (isWhom) {
-        cardState.whomCard.text = randomFrom(cards.whom)
-        cardState.whomCard.isOpen = true
-        cardState.whomCard.isFlipping = true
-        await wait(300)
-        cardState.whomCard.isFlipping = false
-        await wait(250)
-      }
+    const openCard = async (isScene = true, isIssue = true, isTechnology = true, isTechnique = true) => {
       if (isScene) {
-        cardState.sceneCard.text = randomFrom(cards.scene)
+        cardState.sceneCard.text = randomFrom(cards.scenes)
         cardState.sceneCard.isOpen = true
         cardState.sceneCard.isFlipping = true
         await wait(300)
         cardState.sceneCard.isFlipping = false
         await wait(250)
       }
+      if (isIssue) {
+        cardState.issueCard.text = randomFrom(cards.issues)
+        cardState.issueCard.isOpen = true
+        cardState.issueCard.isFlipping = true
+        await wait(300)
+        cardState.issueCard.isFlipping = false
+        await wait(250)
+      }
+      if (isTechnology) {
+        cardState.technologyCard.text = randomFrom(cards.technologies)
+        cardState.technologyCard.isOpen = true
+        cardState.technologyCard.isFlipping = true
+        await wait(300)
+        cardState.technologyCard.isFlipping = false
+        await wait(250)
+      }
+      if (isTechnique) {
+        cardState.techniqueCard.text = randomFrom(cards.techniques)
+        cardState.techniqueCard.isOpen = true
+        cardState.techniqueCard.isFlipping = true
+        await wait(300)
+        cardState.techniqueCard.isFlipping = false
+        await wait(250)
+      }
     }
 
-    const closeCard = async (isTheme = true, isStyle = true, isWhom = true, isScene = true) => {
-      if (isTheme && cardState.themeCard.isOpen) {
-        cardState.themeCard.isOpen = false
-        cardState.themeCard.isFlipping = true
-        await wait(300)
-        cardState.themeCard.isFlipping = false
-      }
-      if (isStyle && cardState.styleCard.isOpen) {
-        cardState.styleCard.isOpen = false
-        cardState.styleCard.isFlipping = true
-        await wait(300)
-        cardState.styleCard.isFlipping = false
-      }
-      if (isWhom && cardState.whomCard.isOpen) {
-        cardState.whomCard.isOpen = false
-        cardState.whomCard.isFlipping = true
-        await wait(300)
-        cardState.whomCard.isFlipping = false
-      }
+    const closeCard = async (isScene = true, isIssue = true, isTechnology = true, isTechnique = true) => {
       if (isScene && cardState.sceneCard.isOpen) {
         cardState.sceneCard.isOpen = false
         cardState.sceneCard.isFlipping = true
         await wait(300)
         cardState.sceneCard.isFlipping = false
+      }
+      if (isIssue && cardState.issueCard.isOpen) {
+        cardState.issueCard.isOpen = false
+        cardState.issueCard.isFlipping = true
+        await wait(300)
+        cardState.issueCard.isFlipping = false
+      }
+      if (isTechnology && cardState.technologyCard.isOpen) {
+        cardState.technologyCard.isOpen = false
+        cardState.technologyCard.isFlipping = true
+        await wait(300)
+        cardState.technologyCard.isFlipping = false
+      }
+      if (isTechnique && cardState.techniqueCard.isOpen) {
+        cardState.techniqueCard.isOpen = false
+        cardState.techniqueCard.isFlipping = true
+        await wait(300)
+        cardState.techniqueCard.isFlipping = false
       }
       if (!isAllCardOpen.value) {
         timerState.time = 0
@@ -188,23 +188,23 @@ export default defineComponent({
       await openCard()
     }
 
-    const clickThemeCard = () => {
-      if (cardState.themeCard.isOpen) { return }
+    const clickSceneCard = () => {
+      if (cardState.sceneCard.isOpen) { return }
       openCard(true, false)
     }
 
-    const clickStyleCard = () => {
-      if (cardState.styleCard.isOpen) { return }
+    const clickIssueCard = () => {
+      if (cardState.issueCard.isOpen) { return }
       openCard(false, true)
     }
 
-    const clickWhomCard = () => {
-      if (cardState.whomCard.isOpen) { return }
+    const clickTechnologyCard = () => {
+      if (cardState.technologyCard.isOpen) { return }
       openCard(true, false)
     }
 
-    const clickSceneCard = () => {
-      if (cardState.sceneCard.isOpen) { return }
+    const clickTechniqueCard = () => {
+      if (cardState.techniqueCard.isOpen) { return }
       openCard(false, true)
     }
 
@@ -225,10 +225,10 @@ export default defineComponent({
       setNewCard,
       openCard,
       closeCard,
-      clickThemeCard,
-      clickStyleCard,
-      clickWhomCard,
       clickSceneCard,
+      clickIssueCard,
+      clickTechnologyCard,
+      clickTechniqueCard,
       timerState,
       startCount
     }
@@ -278,7 +278,7 @@ export default defineComponent({
   z-index: 1;
   text-align: center;
   pointer-events: none;
-  filter: drop-shadow(0 0 1px #ffff000);
+  filter: drop-shadow(0 0 1px #fff000);
   * {
     pointer-events: auto;
   }

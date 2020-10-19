@@ -29,7 +29,7 @@
 
           <h2>ライセンス</h2>
           <p>
-            このプロジェクトは<a href="https://github.com/yuneco/cha-chat" target="_blank">GitHubのリポジトリ</a>でOSS（オープンソースソフトウエア）として公開されており、誰でも自由に利用・改変することが許諾されています。
+            このプロジェクトは<a href="https://github.com/tesasaki/futurecard" target="_blank">GitHubのリポジトリ</a>でOSS（オープンソースソフトウエア）として公開されており、誰でも自由に利用・改変することが許諾されています。
             このプロジェクトの背景や活用に関しては上記のリポジトリの説明をご参照ください。
           </p>
         </div>
