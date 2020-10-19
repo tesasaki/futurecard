@@ -8,7 +8,7 @@
         :text="cardState.sceneCard.text"
         :bgcolor="cardState.sceneCard.color"
         :isOpen="cardState.sceneCard.isOpen"
-        @click="clicksceneCard"
+        @click="clickSceneCard"
       />
     </div>
     <div class="card-box issue-card-box" :style="{filter: `drop-shadow(0 5px 15px ${cardState.issueCard.shadow})`}">
@@ -245,8 +245,8 @@ export default defineComponent({
 }
 .card-box {
   position: relative;
-  height: calc(50% - 100px);
-  width: calc(60% - 50px);
+  height: calc(70% - 380px);
+  width: calc(100% - 50px);
   padding: 20px 10%;
   transform-style: preserve-3d;
   perspective: 1000px;

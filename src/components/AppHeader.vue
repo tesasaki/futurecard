@@ -4,8 +4,8 @@
       働 き 方 の  未 来 を  考 え る
     </div>
     <div class="title">
-      CHA-CHAT!
-      <div class="ruby">チャチャット!</div>
+      FUTURE CARD
+      <div class="ruby">powered by CHA-CHAT!</div>
     </div>
   </header>
 </template>
@@ -51,7 +51,7 @@ header {
       font-size: 14pt;
       transform: rotate(4deg);
       &::after{
-        content: 'チャチャット!';
+        content: 'powered by CHA-CHAT!';
         position: absolute;
         left: 0;
         top: 0;
