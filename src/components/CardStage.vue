@@ -209,7 +209,7 @@ export default defineComponent({
     }
 
     const startCount = async () => {
-      timerState.time = 20
+      timerState.time = 90
       timerState.isActive = true
       await wait(0)
       timerState.isPopping = true
@@ -245,7 +245,7 @@ export default defineComponent({
 }
 .card-box {
   position: relative;
-  height: calc(70% - 380px);
+  height: calc(30% - 50px);
   width: calc(100% - 50px);
   padding: 20px 10%;
   transform-style: preserve-3d;
