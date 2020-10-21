@@ -246,8 +246,8 @@ export default defineComponent({
 .card-box {
   position: relative;
   height: calc(30% - 50px);
-  width: calc(100% - 50px);
-  padding: 20px 10%;
+  width: calc(105% - 50px);
+  padding: 15px 5%;
   transform-style: preserve-3d;
   perspective: 1000px;
   text-align: left;

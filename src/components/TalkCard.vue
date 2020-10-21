@@ -7,7 +7,7 @@
     @click="$emit('click')"
   >
     <div class="bg-box">
-      <span class="text">タップして<br />カードをひらく</span>
+      <span class="text">タップしてカードをひらく</span>
     </div>
     <div class="text-box">
       <span class="text">{{ displayText }}</span>
@@ -62,7 +62,7 @@ export default defineComponent({
     .text {
       white-space: pre-wrap;
       color: #444;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
     }
   }
   .bg-box {
@@ -74,7 +74,6 @@ export default defineComponent({
     height: 100%;
     top: 0;
     left: 0;
-    padding: 20px;
     text-align: center;
     visibility: visible;
     transition: visibility 0s ease 0.25s;
