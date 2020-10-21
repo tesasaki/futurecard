@@ -81,7 +81,7 @@ export default defineComponent({
       white-space: pre-wrap;
       color: #000;
       mix-blend-mode: soft-light;
-      font-size: 2rem;
+      font-size: 1.4rem;
       font-weight: bold;
       transform: rotateY(180deg);
     }
